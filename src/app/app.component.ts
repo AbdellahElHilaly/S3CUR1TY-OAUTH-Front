@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {MyHttpClientService} from "./my-http-client.service";
-import {ActivatedRoute} from "@angular/router";
+import {MyHttpClientService} from "./service/my-http-client.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {TokenService} from "./service/token.service";
 
 @Component({
   selector: 'app-root',
@@ -9,24 +10,12 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AppComponent implements OnInit{
   title = 'S3CUR1TY-Front';
+  notificationMessage: string | undefined;
 
-  componentToShow: string = "public";
-
-  constructor(private http: MyHttpClientService, private  route : ActivatedRoute) {
+  constructor(private http: MyHttpClientService, private  route : ActivatedRoute, private router: Router,private tokenService: TokenService) {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      if(params['code'] != undefined){
-        this.http.getTokens(params['code']).subscribe(result => {
-          if(result){
-            this.componentToShow = "private";
-          }else {
-            this.componentToShow = "public";
-          }
-        });
-      }
-    });
   }
 
 

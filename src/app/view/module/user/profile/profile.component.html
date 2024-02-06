@@ -1,0 +1,40 @@
+
+<div class="user-profile" *ngIf="isLogged">
+
+  <div class="profile-header">
+    <img src="{{userInfo?.userDetail.picture}}" alt="Profile Picture">
+    <h2>{{userInfo?.userDetail.name}}</h2>
+    <p>{{userInfo?.email}}</p>
+  </div>
+
+  <div class="profile-body">
+    <div class="profile-left">
+
+      <div class="user-details">
+        <h3>User Details:</h3>
+        <ul>
+          <li><strong>Sub:</strong> {{userInfo?.sub}}</li>
+          <li><strong>Given Name:</strong> {{userInfo?.userDetail.given_name}}</li>
+          <li><strong>Family Name:</strong> {{userInfo?.userDetail.family_name}}</li>
+          <li><strong>Email Verified:</strong> {{userInfo?.userDetail.email_verified ? 'Yes' : 'No'}}</li>
+          <li><strong>Locale:</strong> {{userInfo?.userDetail.locale}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="authorities-right">
+      <h3>Roles and Authorities:</h3>
+      <ul>
+        <li *ngFor="let role of userInfo?.roles">
+          {{role.name}}
+          <ul>
+            <li *ngFor="let privilege of role.privileges">
+              {{privilege.name}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,6 @@
+<div class="floating-button" *ngIf="!tokenExists()">
+  <button mat-fab extended (click)="openUrlInSameWindow()">
+    <mat-icon>account_circle</mat-icon>
+    Sign in now
+  </button>
+</div>

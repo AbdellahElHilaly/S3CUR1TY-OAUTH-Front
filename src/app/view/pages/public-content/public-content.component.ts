@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MyHttpClientService} from "../my-http-client.service";
-import {Message} from "../message";
+import {MyHttpClientService} from "../../../service/my-http-client.service";
+import {Message} from "../../../model/message";
 
 @Component({
   selector: 'app-public-content',
@@ -14,7 +14,7 @@ export class PublicContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get("/public/messages").subscribe((data:Message) => {
+    this.http.get("/public").subscribe((data:Message) => {
       this.content = data.message;
     });
   }
